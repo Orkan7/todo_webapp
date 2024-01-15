@@ -11,7 +11,7 @@ st.subheader("Hi")
 todos = functions.get_todos()
 
 def add_todo():
-    newtodo = st.session_state["todo_input"]
+    newtodo = st.session_state["todo_input"] + "\n"
     todos.append(newtodo)
     functions.write_todos(todos)
 
