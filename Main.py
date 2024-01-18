@@ -16,13 +16,15 @@ def add_todo():
     functions.write_todos(todos)
 
 
-for i in todos:
-    st.checkbox(i)
+for i, todo in enumerate(todos):
+    checkbox = st.checkbox(todo, key=todo)
+    if checkbox:
+        todos.pop(i)
+        functions.write_todos(todos)
+        del st.session_state[todo]
+        st.experimental_rerun()
 
 
-st.text_input(label="nice",placeholder="Add new todo...",
+
+st.text_input(label="",placeholder="Add new todo...",
               on_change=add_todo, key="todo_input")
-
-print("Bismillah")
-
-st.session_state
